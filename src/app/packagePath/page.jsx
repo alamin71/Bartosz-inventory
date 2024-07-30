@@ -90,10 +90,10 @@ export default function PackagePath() {
             {t('starting-title-front')} <br /> {t('starting-title-end')}
           </p>
           <hr
-            className="w-4/5 sm:w-[540px] mr-20"
+            className="w-3/5 sm:w-[540px] mr-6"
             style={{ borderTop: "2px solid #FF0060" }}
           />
-          <hr className="w-4/5 sm:w-[540px] mt-2 ml-20 border-t-2" />
+          <hr className="w-3/5 sm:w-[540px] mt-2 ml-10 border-t-2" />
         </div>
       </div>
       <div className="w-full max-w-screen-xl px-4 sm:px-8 py-6 z-10">

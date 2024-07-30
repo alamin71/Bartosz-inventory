@@ -44,17 +44,27 @@ const TableComponent = ({ packages }) => {
 
   useEffect(() => {
     // Calculate total price, combined price, final price, and savings
-    const totalPackagePrice = packages.reduce((acc, packageItem) => acc + packageItem.price, 0);
-    setTotalPrice(totalPackagePrice*numOfPremises);
+    const totalPackagePrice = packages.reduce(
+      (acc, packageItem) => acc + packageItem.price,
+      0
+    );
+    setTotalPrice(totalPackagePrice * numOfPremises);
 
-    const ids = packages.map((pkg) => pkg.id).sort().join("+");
+    const ids = packages
+      .map((pkg) => pkg.id)
+      .sort()
+      .join("+");
     const combinedPackagePrice = combinedPackages[ids] || null;
     setCombinedPrice(combinedPackagePrice);
 
-    const finalPackagePrice = combinedPackagePrice ? combinedPackagePrice * numOfPremises : totalPackagePrice * numOfPremises;
+    const finalPackagePrice = combinedPackagePrice
+      ? combinedPackagePrice * numOfPremises
+      : totalPackagePrice * numOfPremises;
     setFinalPrice(finalPackagePrice);
 
-    const totalSavings = combinedPackagePrice ? (totalPackagePrice * numOfPremises) - finalPackagePrice : 0;
+    const totalSavings = combinedPackagePrice
+      ? totalPackagePrice * numOfPremises - finalPackagePrice
+      : 0;
     setSavings(totalSavings);
   }, [packages, numOfPremises]);
 
@@ -64,11 +74,17 @@ const TableComponent = ({ packages }) => {
       .filter((item) => ["1", "2", "3"].includes(item.id))
       .map((item, index) => ({
         ...item,
-        savings: calculateSalesSavings(item, parseFloat(inputValues[index]) || 0),
+        savings: calculateSalesSavings(
+          item,
+          parseFloat(inputValues[index]) || 0
+        ),
       }));
     setMonthlySalesSavings(monthlySavings);
 
-    const totalMonthlySalesSavings = monthlySavings.reduce((acc, item) => acc + item.savings, 0);
+    const totalMonthlySalesSavings = monthlySavings.reduce(
+      (acc, item) => acc + item.savings,
+      0
+    );
     setTotalMonthlySavings(totalMonthlySalesSavings);
     setAnnualSavings(totalMonthlySalesSavings * 12);
   }, [inputValues, numOfPremises]);
@@ -78,7 +94,17 @@ const TableComponent = ({ packages }) => {
     if (typeof window !== "undefined") {
       saveToLocalStorage();
     }
-  }, [inputValues, numOfPremises, totalPrice, combinedPrice, finalPrice, savings, totalMonthlySavings, monthlySalesSavings, annualSavings]);
+  }, [
+    inputValues,
+    numOfPremises,
+    totalPrice,
+    combinedPrice,
+    finalPrice,
+    savings,
+    totalMonthlySavings,
+    monthlySalesSavings,
+    annualSavings,
+  ]);
 
   const handleInputChange = (index, value) => {
     const newInputValues = [...inputValues];
@@ -95,13 +121,13 @@ const TableComponent = ({ packages }) => {
     if (input && input > 0) {
       switch (packageItem.id) {
         case "1":
-          savings = ((input * 0.125) - packageItem.price + 300) * numOfPremises;
+          savings = (input * 0.125 - packageItem.price + 300) * numOfPremises;
           break;
         case "2":
-          savings = ((input * 0.15) - packageItem.price + 750) * numOfPremises;
+          savings = (input * 0.15 - packageItem.price + 750) * numOfPremises;
           break;
         case "3":
-          savings = ((input * 0.05) - packageItem.price + 150) * numOfPremises;
+          savings = (input * 0.05 - packageItem.price + 150) * numOfPremises;
           break;
         default:
           savings = 0;
@@ -139,58 +165,64 @@ const TableComponent = ({ packages }) => {
     <div className="mx-auto text-black text-base sm:text-lg">
       <div>
         {packages.map((item, index) => (
-          <div className="flex justify-between items-center" key={index}>
-            <p className="mb-1">{t(`${item.problem}`)}</p>
-            <hr className="border-x border-dashed w-1/4 sm:w-1/3 ml-12 mb-1 border-gray-400" />
-            {(item.id === "1" || item.id === "2" || item.id === "3") ? (
+          <div className="flex justify-between gap-2 items-center" key={index}>
+            <p className="mb-1 text-xs sm:text-base">{t(`${item.problem}`)}</p>
+            <hr className="border-x border-dashed w-1/4 sm:w-1/3 ml-5 border-gray-400" />
+            {item.id === "1" || item.id === "2" || item.id === "3" ? (
               <input
                 type="text"
                 value={inputValues[index]}
                 onChange={(e) => handleInputChange(index, e.target.value)}
-                className="w-32 h-5 border rounded border-black font-semibold py-3 mb-1 text-center"
+                className="w-16 sm:w-32 h-5 border rounded border-black font-semibold py-3 mb-1 text-center"
               />
             ) : (
               <p className="mb-1 items-center">--</p>
             )}
           </div>
         ))}
-        <div className="flex justify-between items-center">
-          <p>{t('premises')}</p>
+        <div className="flex justify-between gap-2 items-center">
+          <p className="text-xs sm:text-base">{t("premises")}</p>
           <hr className="border-x border-dashed w-1/4 sm:w-1/3 ml-5 border-gray-400" />
           <input
             type="number"
             min={1}
             value={numOfPremises}
             onChange={(e) => handleNumOfPremisesChange(e.target.value)}
-            className="w-20 h-5 border rounded border-black font-semibold py-3 text-center"
+            className="w-16 sm:w-32 h-5 border rounded border-black font-semibold py-3 text-center"
           />
         </div>
       </div>
       <div>
-        <p className="my-3 text-xl sm:text-2xl font-semibold">{t('selected-packages')}:</p>
+        <p className="my-3 text-xl sm:text-2xl font-semibold">
+          {t("selected-packages")}:
+        </p>
         {packages.map((item, index) => (
           <div className="flex justify-between gap-4 items-center" key={index}>
-            <div className="mb-1 text-base sm:text-lg">{t(`${item.package}`)}</div>
+            <div className="mb-1 text-xs sm:text-base">
+              {t(`${item.package}`)}
+            </div>
             <hr className="border-x border-dashed w-1/4 sm:w-1/3 border-gray-400" />
-            <div className="mb-1 font-semibold">${(item.price * numOfPremises).toFixed(2)}</div>
+            <div className="mb-1 font-semibold">
+              ${(item.price * numOfPremises).toFixed(2)}
+            </div>
           </div>
         ))}
         <div className="mt-3">
           <div className="flex justify-between items-center mb-1">
-            <p>{t('total')}</p>
+            <p className=" text-xs sm:text-base">{t("total")}</p>
             <hr className="border-x border-dashed w-1/4 sm:w-1/3 pl-20 border-gray-400" />
             <p className="font-bold">${totalPrice.toFixed(2)}</p>
           </div>
           {combinedPrice && (
             <div className="flex justify-between items-center mb-1">
-              <p>{t('package-price')}</p>
+              <p className="text-xs sm:text-base">{t("package-price")}</p>
               <hr className="border-x border-dashed w-1/4 sm:w-1/3 pl-10 border-gray-400" />
               <p className="font-bold">${finalPrice.toFixed(2)}</p>
             </div>
           )}
           {combinedPrice && (
             <div className="flex justify-between items-center mb-1">
-              <p>{t('save')}</p>
+              <p className=" text-xs sm:text-base">{t("save")}</p>
               <hr className="border-x border-dashed w-1/4 sm:w-1/3 mx-10 border-gray-400" />
               <p className="font-bold">${savings.toFixed(2)}</p>
             </div>
@@ -199,26 +231,37 @@ const TableComponent = ({ packages }) => {
       </div>
       {monthlySalesSavings && monthlySalesSavings.length > 0 && (
         <div>
-          <p className="my-3 text-xl sm:text-2xl font-semibold">{t('expected-savings')}:</p>
+          <p className="my-3 text-xl sm:text-2xl font-semibold">
+            {t("expected-savings")}:
+          </p>
           {monthlySalesSavings
             .filter((item) => ["1", "2", "3"].includes(item.id))
             .map((item, index) => (
-              <div className="flex justify-between gap-4 items-center" key={index}>
-                <div className="mb-1">{t(`${item.package}`)}</div>
+              <div
+                className="flex justify-between gap-4 items-center"
+                key={index}
+              >
+                <p className="mb-1 text-xs sm:text-base">
+                  {t(`${item.package}`)}
+                </p>
                 <hr className="border-x border-dashed w-1/4 sm:w-1/2 border-gray-400" />
-                <div className="mb-1 font-semibold">${item.savings.toFixed(2)}</div>
+                <div className="mb-1 font-semibold">
+                  ${item.savings.toFixed(2)}
+                </div>
               </div>
             ))}
           <div className="mt-3">
             <div className="flex justify-between items-center mb-1">
-              <p>{t('monthly-savings')}</p>
+              <p className=" text-xs sm:text-base">{t("monthly-savings")}</p>
               <hr className="border-x border-dashed w-1/4 sm:w-1/3 pl-20 border-gray-400" />
               <p className="font-bold">${totalMonthlySavings.toFixed(2)}</p>
             </div>
             <div className="flex justify-between items-center mb-1">
-              <p>{t('annual-savings')}</p>
+              <p className=" text-xs sm:text-base">{t("annual-savings")}</p>
               <hr className="border-x border-dashed w-1/4 sm:w-1/3 pl-10 border-gray-400" />
-              <p className="font-bold">${(totalMonthlySavings * 12).toFixed(2)}</p>
+              <p className="font-bold">
+                ${(totalMonthlySavings * 12).toFixed(2)}
+              </p>
             </div>
           </div>
         </div>
