@@ -47,7 +47,7 @@ export default function Home() {
   const total = values.revenue + values.losses;
 
   return (
-    <div className="flex flex-col lg:flex-row gap-4 md:gap-64 lg:gap-12 lg:h-[calc(100vh-80px)] bg-black/95 sm:px-8 md:px-16 lg:px-10 xl:px-40 sm:py-20">
+    <div className="flex flex-col xl:justify-center lg:flex-row gap-4 md:gap-64 xl:gap-28 lg:gap-12 lg:h-[calc(100vh-80px)] bg-black/95 sm:px-8 md:px-16 lg:px-10 sm:py-20">
       <div className="bg-white/10 flex-grow lg:flex-grow-0 rounded-lg mt-5 lg:mt-16 lg:h-[56%] md:h-[480px] ">
         <div className="relative h-64 sm:h-[400px] md:h-[480px] lg:h-full rounded-lg overflow-hidden ">
           <Image
