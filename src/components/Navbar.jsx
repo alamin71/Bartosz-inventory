@@ -39,13 +39,13 @@ export default function Navbar() {
   };
 
   return (
-    <div className="bg-black h-20 w-full text-white px-3 sm:px-10  lg:pl-3 xl:px-32 md:pl-4 flex gap-10 justify-between items-center">
+    <div className="bg-black h-28 w-full text-white px-3 sm:px-10 lg:pl-3 xl:px-32 md:pl-4 flex gap-10 justify-between items-center">
       <Link href="/">
         <div className="py-2">
           <Image
             src={logo}
             alt="logo"
-            width={300}
+            width={250}
             // height={60}
             className="hover:opacity-80 transition-opacity duration-300"
           />
