@@ -106,11 +106,23 @@ const TableComponent = ({ packages }) => {
     annualSavings,
   ]);
 
+  function formatMoney(amount) {
+    return amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  }
+
   const handleInputChange = (index, value) => {
     const newInputValues = [...inputValues];
     newInputValues[index] = value;
     setInputValues(newInputValues);
   };
+
+  // const handleInputChange = (index, value) => {
+  //   // Remove commas before parsing and applying the formatMoney function
+  //   const numericValue = value.replace(/,/g, "");
+  //   const newInputValues = [...inputValues];
+  //   newInputValues[index] = formatMoney(numericValue);
+  //   setInputValues(newInputValues);
+  // };
 
   const handleNumOfPremisesChange = (value) => {
     setNumOfPremises(parseInt(value, 10) || 0);
@@ -203,7 +215,7 @@ const TableComponent = ({ packages }) => {
             </div>
             <hr className="border-x border-dashed w-1/4 sm:w-1/3 border-gray-400" />
             <div className="mb-1 font-semibold">
-              ${(item.price * numOfPremises).toFixed(2)}
+              ${formatMoney((item.price * numOfPremises).toFixed(2))}
             </div>
           </div>
         ))}
@@ -211,20 +223,20 @@ const TableComponent = ({ packages }) => {
           <div className="flex justify-between items-center mb-1">
             <p className=" text-xs sm:text-base">{t("total")}</p>
             <hr className="border-x border-dashed w-1/4 sm:w-1/3 pl-20 border-gray-400" />
-            <p className="font-bold">${totalPrice.toFixed(2)}</p>
+            <p className="font-bold">${formatMoney(totalPrice.toFixed(2))}</p>
           </div>
           {combinedPrice && (
             <div className="flex justify-between items-center mb-1">
               <p className="text-xs sm:text-base">{t("package-price")}</p>
               <hr className="border-x border-dashed w-1/4 sm:w-1/3 pl-10 border-gray-400" />
-              <p className="font-bold">${finalPrice.toFixed(2)}</p>
+              <p className="font-bold">${formatMoney(finalPrice.toFixed(2))}</p>
             </div>
           )}
           {combinedPrice && (
             <div className="flex justify-between items-center mb-1">
               <p className=" text-xs sm:text-base">{t("save")}</p>
               <hr className="border-x border-dashed w-1/4 sm:w-1/3 mx-10 border-gray-400" />
-              <p className="font-bold">${savings.toFixed(2)}</p>
+              <p className="font-bold">${formatMoney(savings.toFixed(2))}</p>
             </div>
           )}
         </div>
@@ -246,7 +258,7 @@ const TableComponent = ({ packages }) => {
                 </p>
                 <hr className="border-x border-dashed w-1/4 sm:w-1/2 border-gray-400" />
                 <div className="mb-1 font-semibold">
-                  ${item.savings.toFixed(2)}
+                  ${formatMoney(item.savings.toFixed(2))}
                 </div>
               </div>
             ))}
@@ -254,13 +266,15 @@ const TableComponent = ({ packages }) => {
             <div className="flex justify-between items-center mb-1">
               <p className=" text-xs sm:text-base">{t("monthly-savings")}</p>
               <hr className="border-x border-dashed w-1/4 sm:w-1/3 pl-20 border-gray-400" />
-              <p className="font-bold">${totalMonthlySavings.toFixed(2)}</p>
+              <p className="font-bold">
+                ${formatMoney(totalMonthlySavings.toFixed(2))}
+              </p>
             </div>
             <div className="flex justify-between items-center mb-1">
               <p className=" text-xs sm:text-base">{t("annual-savings")}</p>
               <hr className="border-x border-dashed w-1/4 sm:w-1/3 pl-10 border-gray-400" />
               <p className="font-bold">
-                ${(totalMonthlySavings * 12).toFixed(2)}
+                ${formatMoney((totalMonthlySavings * 12).toFixed(2))}
               </p>
             </div>
           </div>

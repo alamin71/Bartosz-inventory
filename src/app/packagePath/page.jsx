@@ -100,7 +100,7 @@ export default function PackagePath() {
         <div className="flex flex-wrap -mx-2">
           {packageData.map((item) => {
             const isDependentPackage = [
-              "4-package",
+              // "4-package",
               "5-package",
               "6-package",
             ].includes(item.package);

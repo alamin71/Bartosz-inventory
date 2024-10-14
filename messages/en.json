@@ -2,26 +2,27 @@
   "HomePage": {
     "check-your-benefits": "Check your benefits",
     "until-now": "Until Now",
-    "our-clients-increased": "Our clients increased by",
+    "our-clients-increased": "Our clients’ increased profit",
+    "details": "Details",
     "profitability-by": "Profitability by",
     "which-is": "Which is",
     "that-comes-from": "That comes from",
-    "improved-revenue": "In improved revenue",
-    "prevented-losses":"In prevented losses",
+    "improved-revenue": "Improved Revenue",
+    "prevented-losses": "Prevented Losses",
     "reduced-hours": "Reduced hours of work",
-    "horecaAI-menu": "HorecaAI 3-course menu",
+    "horecaAI-menu": "horecaAI 3-course menu",
     "point-1": "1. F&B profit increase at least",
-    "point-2": "2. F&B management best practices framework",
-    "point-3": "3. Unnecessary carbon and water footprint reduced by at least"
+    "point-2": "2. Unnecessary carbon and water footprint reduced by at least",
+    "point-3": "3. F&B management best practices framework"
   },
   "SalesTool": {
     "title": "The Sales Tool",
     "choose-results": "Choose the results that you want to achieve",
     "answer-questions": "Answer questions to receive solutions suggestions"
   },
-  "Question":{
-    "title":"Answer the question below",
-    "button-1":"Continue"
+  "Question": {
+    "title": "Answer the question below",
+    "button-1": "Continue"
   },
   "QuestionList": {
     "true": "TRUE",
@@ -85,19 +86,19 @@
   },
   "Packages": {
     "title": "Suggested Packages",
-    "starting-title-front":"Which Problem do you want",
-    "starting-title-end":"to solve",
-    "button-1":"Check Out",
-    "premises":"Number of Premises",
-    "selected-packages":"Selected packages",
-    "total":"Total package price",
-    "package-price":"Your price for the packages",
-    "save":"You save",
-    "expected-savings":"Expected monthly savings",
-    "monthly-savings":"Monthly savings with no spoilers",
-    "annual-savings":"This means that you will save annually",
-    "info":"Information",
-    "button-2":"Close",
+    "starting-title-front": "Which Problem do you want",
+    "starting-title-end": "to solve",
+    "button-1": "Check Out",
+    "premises": "Number of Premises",
+    "selected-packages": "Selected packages",
+    "total": "Total package price",
+    "package-price": "Your price for the packages",
+    "save": "You save",
+    "expected-savings": "Expected monthly savings",
+    "monthly-savings": "Monthly savings with no spoilers",
+    "annual-savings": "This means that you will save annually",
+    "info": "Information",
+    "button-2": "Close",
     "1-problem": "I want to reduce costs related to the sale of beverages",
     "1-package": "Beverage cost-efficiency manager",
     "2-problem": "I want to reduce cost of sold food",
@@ -115,14 +116,14 @@
     "8-problem": "I want to know my Profit & Loss daily",
     "8-package": "Daily Profit & Loss monitor"
   },
-  "PriceList":{
-    "title":"My Business Case",
-    "conclusion":"Take the profit - take No Spoilers",
-    "button-1":"Place Order"
+  "PriceList": {
+    "title": "My Business Case",
+    "conclusion": "Take the profit - take No Spoilers",
+    "button-1": "Place Order"
   },
-  "CheckOut":{
-    "email":"Enter Your Email",
-    "email-placeholder":"Email",
+  "CheckOut": {
+    "email": "Enter Your Email",
+    "email-placeholder": "Email",
     "button-1": "Submit"
   }
 }

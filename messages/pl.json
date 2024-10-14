@@ -2,17 +2,18 @@
   "HomePage": {
     "check-your-benefits": "Sprawdź swoje korzyści",
     "until-now": "Do tej pory",
-    "our-clients-increased": "Nasi klienci zwiększyli",
+    "our-clients-increased": "Zwiększony zysk naszych klientów",
+    "details": "Bliższe dane",
     "profitability-by": "Rentowność o",
     "which-is": "Co stanowi",
     "that-comes-from": "Co wynika z",
     "improved-revenue": "Zwiększonych przychodów",
     "prevented-losses": "Unikniętych strat",
     "reduced-hours": "Skróconych godzin pracy",
-    "horecaAI-menu": "Menu HorecaAI z trzema daniami",
+    "horecaAI-menu": "Menu horecaAI z trzema daniami",
     "point-1": "1. Zwiększenie zysku F&B o co najmniej",
-    "point-2": "2. Ramy najlepszych praktyk zarządzania F&B",
-    "point-3": "3. Redukcja niepotrzebnego śladu węglowego i zużycia wody o co najmniej"
+    "point-2": "2. Redukcja niepotrzebnego śladu węglowego i zużycia wody o co najmniej",
+    "point-3": "3. Ramy najlepszych praktyk zarządzania F&B"
   },
   "SalesTool": {
     "title": "Narzędzie sprzedaży",
@@ -85,8 +86,8 @@
   },
   "Packages": {
     "title": "Sugerowane pakiety",
-    "starting-title-front":"Który problem chcesz",
-    "starting-title-end":"rozwiązać",
+    "starting-title-front": "Który problem chcesz",
+    "starting-title-end": "rozwiązać",
     "button-1": "Zobacz",
     "premises": "Liczba placówek",
     "selected-packages": "Wybrane pakiety",

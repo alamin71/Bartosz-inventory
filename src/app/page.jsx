@@ -46,6 +46,10 @@ export default function Home() {
 
   const total = values.revenue + values.losses;
 
+  function formatMoney(amount) {
+    return amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  }
+
   return (
     <div className="flex flex-col xl:justify-center lg:flex-row gap-4 md:gap-64 xl:gap-28 lg:gap-12 lg:h-[calc(100vh-80px)] bg-black/95 sm:px-8 md:px-16 lg:px-10 sm:py-20">
       <div className="bg-white/10 flex-grow lg:flex-grow-0 rounded-lg mt-5 lg:mt-16 lg:h-[56%] md:h-[480px] ">
@@ -69,57 +73,58 @@ export default function Home() {
           </div>
         </div>
         <div className="text-white py-4 sm:py-8 md:py-10 lg:py-10 px-3 md:px-12 lg:px-8">
-          <p className="text-xl lg:text-3xl">{t("horecaAI-menu")}:</p>
-          <div className="mt-2 flex flex-col gap-2">
-            <p className="text-lg lg:text-xl">
+          <p className="text-xl lg:text-2xl md:-ml-7">{t("horecaAI-menu")}:</p>
+          <div className="mt-2 flex flex-col">
+            <p className="sm:text-lg lg:text-xl">
               {t("point-1")}{" "}
-              <span className="text-2xl lg:text-3xl font-bold">20%</span>
+              <span className="text-xl lg:text-2xl font-bold">20%</span>
             </p>
-            <p className="text-lg lg:text-xl">{t("point-2")}</p>
-            <p className="text-lg lg:text-xl">
-              {t("point-3")}{" "}
-              <span className="text-2xl lg:text-3xl font-bold">50%</span>
+            <p className="sm:text-lg lg:text-xl">
+              {t("point-2")}{" "}
+              <span className="text-xl lg:text-2xl font-bold">50%</span>
             </p>
+            <p className="sm:text-lg lg:text-xl">{t("point-3")}</p>
           </div>
         </div>
       </div>
 
-      <div className="flex flex-col text-white lg:mt-16 px-1 md:px-12 lg:px-4">
-        <div className="w-full sm:w-80 flex flex-col gap-1 px-4 sm:px-0">
-          <p className="text-xl lg:text-2xl font-semibold mb-2">
-            {t("until-now")} <br />
-            {t("our-clients-increased")}
-          </p>
+      <div className="flex flex-col text-white text-end gap-5 lg:mt-16 px-1 md:px-12 lg:px-4">
+        <div className="w-full lg:w-80 flex flex-col px-4 sm:px-0 text-[#FF0079]">
           <div className="overflow-hidden">
-            <p className="text-3xl lg:text-5xl font-semibold">29.58%</p>
+            <p className="text-3xl lg:text-4xl font-bold">29.58%</p>
           </div>
-          <p className="text-lg lg:text-xl my-2">{t("which-is")}</p>
+          {/* <p className="text-lg lg:text-xl my-2">{t("which-is")}</p> */}
           <div className="overflow-hidden">
             <p className="text-3xl lg:text-4xl font-bold">
-              {Math.floor(total)} USD
+              = $ {formatMoney(Math.floor(total))}
             </p>
           </div>
-          <p className="text-lg lg:text-2xl mt-6 mb-4">
-            {t("that-comes-from")}
+          <p className="text-xl font-semibold mb-2">
+            {/* {t("until-now")} <br /> */}
+            {t("our-clients-increased")}
           </p>
+          {/* <p className="text-lg lg:text-2xl mt-6 mb-4">
+            {t("that-comes-from")}
+          </p> */}
         </div>
 
         <div className="flex flex-col gap-5 px-4 sm:px-0">
+          <p className="text-lg"> {t("details")} :</p>
           <div className="flex flex-col gap-1 overflow-hidden">
-            <p className="text-3xl lg:text-5xl font-bold">
-              ${Math.floor(values.revenue)}
+            <p className="text-2xl lg:text-3xl font-bold">
+              $ {formatMoney(Math.floor(values.revenue))}
             </p>
             <p className="text-lg lg:text-xl">{t("improved-revenue")}</p>
           </div>
-          <div className="flex flex-col gap-1 overflow-hidden">
-            <p className="text-3xl lg:text-5xl font-bold">
-              ${Math.floor(values.losses)}
+          <div className="flex flex-col overflow-hidden">
+            <p className="text-2xl lg:text-3xl font-bold">
+              $ {formatMoney(Math.floor(values.losses))}
             </p>
             <p className="text-lg lg:text-xl">{t("prevented-losses")}</p>
           </div>
-          <div className="flex flex-col gap-1 overflow-hidden">
-            <p className="text-3xl lg:text-5xl font-bold">
-              {Math.floor(values.workHours)}
+          <div className="flex flex-col overflow-hidden">
+            <p className="text-2xl lg:text-3xl font-bold">
+             h {formatMoney(Math.floor(values.workHours))}
             </p>
             <p className="text-lg lg:text-xl">{t("reduced-hours")}</p>
           </div>
