@@ -19,7 +19,7 @@ const combinedPackages = {
 
 const TableComponent = ({ packages }) => {
   const t = useTranslations("Packages");
-  const [inputValues, setInputValues] = useState(packages.map(() => ""));
+  const [inputValues, setInputValues] = useState(() => packages.map(() => "0"));
   const [numOfPremises, setNumOfPremises] = useState(1);
   const [totalPrice, setTotalPrice] = useState(0);
   const [combinedPrice, setCombinedPrice] = useState(0);
@@ -36,7 +36,7 @@ const TableComponent = ({ packages }) => {
       const savedData = localStorage.getItem("calculatedInfo");
       if (savedData) {
         const { inputValues, numOfPremises } = JSON.parse(savedData);
-        setInputValues(inputValues);
+        setInputValues(inputValues || packages.map(() => "0"));
         setNumOfPremises(numOfPremises);
       }
     }
@@ -112,7 +112,7 @@ const TableComponent = ({ packages }) => {
 
   const handleInputChange = (index, value) => {
     const newInputValues = [...inputValues];
-    newInputValues[index] = value;
+    newInputValues[index] = value === "" ? "0" : value; // Ensure 0 is set for empty input
     setInputValues(newInputValues);
   };
 
