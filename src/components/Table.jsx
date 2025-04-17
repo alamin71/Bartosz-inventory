@@ -1,6 +1,6 @@
 "use client";
-import { useState, useEffect } from "react";
 import { useTranslations } from "next-intl";
+import { useEffect, useState } from "react";
 
 // Define the combined packages and their prices
 const combinedPackages = {
@@ -20,7 +20,7 @@ const combinedPackages = {
 const TableComponent = ({ packages }) => {
   const t = useTranslations("Packages");
   const [inputValues, setInputValues] = useState(() => packages.map(() => "0"));
-  const [numOfPremises, setNumOfPremises] = useState(1);
+  const [numOfPremises, setNumOfPremises] = useState(0);
   const [totalPrice, setTotalPrice] = useState(0);
   const [combinedPrice, setCombinedPrice] = useState(0);
   const [finalPrice, setFinalPrice] = useState(0);
@@ -174,10 +174,13 @@ const TableComponent = ({ packages }) => {
   }
 
   return (
-    <div className="mx-auto text-black text-base sm:text-lg">
-      <div>
+    <div className="mx-auto text-black text-base sm:text-lg space-y-5">
+      <div className="bg-white rounded-lg p-4">
+        <p className="my-3 text-xl sm:text-2xl font-semibold text-center mb-5">
+          {t("calculated-monthly-revenue")}:
+        </p>
         {packages.map((item, index) => (
-          <div className="flex justify-between gap-2 items-center" key={index}>
+          <div className="flex justify-between gap-2 items-center " key={index}>
             <p className="mb-1 text-xs sm:text-base">{t(`${item.problem}`)}</p>
             <hr className="border-x border-dashed w-1/4 sm:w-1/3 ml-5 border-gray-400" />
             {item.id === "1" || item.id === "2" || item.id === "3" ? (
@@ -185,7 +188,7 @@ const TableComponent = ({ packages }) => {
                 type="text"
                 value={inputValues[index]}
                 onChange={(e) => handleInputChange(index, e.target.value)}
-                className="w-16 sm:w-32 h-5 border rounded border-black font-semibold py-3 mb-1 text-center"
+                className="w-16 sm:w-40 h-5 border rounded border-black font-semibold py-3 mb-1 text-center"
               />
             ) : (
               <p className="mb-1 items-center">--</p>
@@ -197,53 +200,18 @@ const TableComponent = ({ packages }) => {
           <hr className="border-x border-dashed w-1/4 sm:w-1/3 ml-5 border-gray-400" />
           <input
             type="number"
+            placeholder="Type your premises number"
             min={1}
-            value={numOfPremises}
+            value={numOfPremises || ""}
             onChange={(e) => handleNumOfPremisesChange(e.target.value)}
-            className="w-16 sm:w-32 h-5 border rounded border-black font-semibold py-3 text-center"
+            className="w-16 sm:w-40 h-5 border rounded border-black font-light py-3 text-center placeholder:text-sm"
           />
         </div>
       </div>
-      <div>
-        <p className="my-3 text-xl sm:text-2xl font-semibold">
-          {t("selected-packages")}:
-        </p>
-        {packages.map((item, index) => (
-          <div className="flex justify-between gap-4 items-center" key={index}>
-            <div className="mb-1 text-xs sm:text-base">
-              {t(`${item.package}`)}
-            </div>
-            <hr className="border-x border-dashed w-1/4 sm:w-1/3 border-gray-400" />
-            <div className="mb-1 font-semibold">
-              ${formatMoney((item.price * numOfPremises).toFixed(2))}
-            </div>
-          </div>
-        ))}
-        <div className="mt-3">
-          <div className="flex justify-between items-center mb-1">
-            <p className=" text-xs sm:text-base">{t("total")}</p>
-            <hr className="border-x border-dashed w-1/4 sm:w-1/3 pl-20 border-gray-400" />
-            <p className="font-bold">${formatMoney(totalPrice.toFixed(2))}</p>
-          </div>
-          {combinedPrice && (
-            <div className="flex justify-between items-center mb-1">
-              <p className="text-xs sm:text-base">{t("package-price")}</p>
-              <hr className="border-x border-dashed w-1/4 sm:w-1/3 pl-10 border-gray-400" />
-              <p className="font-bold">${formatMoney(finalPrice.toFixed(2))}</p>
-            </div>
-          )}
-          {combinedPrice && (
-            <div className="flex justify-between items-center mb-1">
-              <p className=" text-xs sm:text-base">{t("save")}</p>
-              <hr className="border-x border-dashed w-1/4 sm:w-1/3 mx-10 border-gray-400" />
-              <p className="font-bold">${formatMoney(savings.toFixed(2))}</p>
-            </div>
-          )}
-        </div>
-      </div>
+
       {monthlySalesSavings && monthlySalesSavings.length > 0 && (
-        <div>
-          <p className="my-3 text-xl sm:text-2xl font-semibold">
+        <div className="bg-white rounded-lg p-4">
+          <p className="my-3 text-xl sm:text-2xl font-semibold text-center mb-5">
             {t("expected-savings")}:
           </p>
           {monthlySalesSavings
@@ -258,7 +226,7 @@ const TableComponent = ({ packages }) => {
                 </p>
                 <hr className="border-x border-dashed w-1/4 sm:w-1/2 border-gray-400" />
                 <div className="mb-1 font-semibold">
-                  ${formatMoney(item.savings.toFixed(2))}
+                  ${formatMoney(item.savings)}
                 </div>
               </div>
             ))}
@@ -266,20 +234,56 @@ const TableComponent = ({ packages }) => {
             <div className="flex justify-between items-center mb-1">
               <p className=" text-xs sm:text-base">{t("monthly-savings")}</p>
               <hr className="border-x border-dashed w-1/4 sm:w-1/3 pl-20 border-gray-400" />
-              <p className="font-bold">
-                ${formatMoney(totalMonthlySavings.toFixed(2))}
-              </p>
+              <p className="font-bold">${formatMoney(totalMonthlySavings)}</p>
             </div>
             <div className="flex justify-between items-center mb-1">
               <p className=" text-xs sm:text-base">{t("annual-savings")}</p>
               <hr className="border-x border-dashed w-1/4 sm:w-1/3 pl-10 border-gray-400" />
               <p className="font-bold">
-                ${formatMoney((totalMonthlySavings * 12).toFixed(2))}
+                ${formatMoney(totalMonthlySavings * 12)}
               </p>
             </div>
           </div>
         </div>
       )}
+
+      <div className="bg-white rounded-lg p-4">
+        <p className="my-3 text-xl sm:text-2xl font-semibold text-center mb-5">
+          {t("selected-packages")}:
+        </p>
+        {packages.map((item, index) => (
+          <div className="flex justify-between gap-4 items-center" key={index}>
+            <div className="mb-1 text-xs sm:text-base">
+              {t(`${item.package}`)}
+            </div>
+            <hr className="border-x border-dashed w-1/4 sm:w-1/3 border-gray-400" />
+            <div className="mb-1 font-semibold">
+              ${formatMoney(item.price * numOfPremises)}
+            </div>
+          </div>
+        ))}
+        <div className="mt-3">
+          <div className="flex justify-between items-center mb-1">
+            <p className=" text-xs sm:text-base">{t("total")}</p>
+            <hr className="border-x border-dashed w-1/4 sm:w-1/3 pl-20 border-gray-400" />
+            <p className="font-bold">${formatMoney(totalPrice)}</p>
+          </div>
+          {combinedPrice && (
+            <div className="flex justify-between items-center mb-1">
+              <p className="text-xs sm:text-base">{t("package-price")}</p>
+              <hr className="border-x border-dashed w-1/4 sm:w-1/3 pl-10 border-gray-400" />
+              <p className="font-bold">${formatMoney(finalPrice)}</p>
+            </div>
+          )}
+          {combinedPrice && (
+            <div className="flex justify-between items-center mb-1">
+              <p className=" text-xs sm:text-base">{t("save")}</p>
+              <hr className="border-x border-dashed w-1/4 sm:w-1/3 mx-10 border-gray-400" />
+              <p className="font-bold">${formatMoney(savings)}</p>
+            </div>
+          )}
+        </div>
+      </div>
     </div>
   );
 };

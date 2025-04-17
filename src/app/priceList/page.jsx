@@ -1,13 +1,13 @@
 "use client";
-import React, { useEffect, useState } from "react";
-import bgImage from "../../../public/images/bgImage.png";
-import Image from "next/image";
-import TableComponent from "../../components/Table";
-import EmailModal from "../../components/emailInputModal";
 import { Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Typography } from "@mui/material";
 import axios from "axios";
+import { useTranslations } from 'next-intl';
+import Image from "next/image";
 import { useRouter } from "next/navigation";
-import {useTranslations} from 'next-intl';
+import { useEffect, useState } from "react";
+import bgImage from "../../../public/images/bgImage.png";
+import TableComponent from "../../components/Table";
+import EmailModal from "../../components/emailInputModal";
 
 export default function PriceList() {
   const t = useTranslations('PriceList');
@@ -76,7 +76,7 @@ export default function PriceList() {
             <hr className="w-3/4 sm:w-[540px] border-t-2 border-[#FF0060] mt-2 mx-auto" />
             <hr className="w-3/4 sm:w-[540px] mt-2 mx-auto border-t-2" />
           </div>
-          <div className="bg-white rounded-lg mb-6 p-4 w-full sm:w-3/4">
+          <div className=" rounded-lg mb-6 w-full sm:w-3/4">
             <TableComponent packages={selectedPackages} />
             <p className="text-sm sm:text-2xl font-semibold text-black text-end mt-4">
               {t('conclusion')}

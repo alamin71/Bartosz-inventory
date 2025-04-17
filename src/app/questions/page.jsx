@@ -1,15 +1,15 @@
 "use client";
-import { useState, useEffect } from "react";
-import QuestionData from "../../components/QuestionData";
 import { Button } from "@mui/material";
-import { useRouter } from "next/navigation";
-import qusImage from "../../../public/images/qusImage.png";
+import { useTranslations } from "next-intl";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
+import qusImage from "../../../public/images/qusImage.png";
+import QuestionData from "../../components/QuestionData";
 import questionsData from "../../utils/questions";
-import {useTranslations} from 'next-intl';
 
 export default function Question() {
-  const t = useTranslations('Question');
+  const t = useTranslations("Question");
   const [currentQuestion, setCurrentQuestion] = useState(null);
   const [answers, setAnswers] = useState({});
   const [currentIndices, setCurrentIndices] = useState({});
@@ -23,8 +23,11 @@ export default function Question() {
     const answer = event.target.value;
     const updatedAnswers = { ...answers };
     if (!Array.isArray(currentQuestion.answer[answer])) {
-      const id = currentQuestion.id.split('.')[0];
-      updatedAnswers[currentQuestion.id] = { id: id, answer: currentQuestion.answer[answer].answer };
+      const id = currentQuestion.id.split(".")[0];
+      updatedAnswers[currentQuestion.id] = {
+        id: id,
+        answer: currentQuestion.answer[answer].answer,
+      };
       setAnswers(updatedAnswers);
     }
     let nextQuestion = findNextQuestion(currentQuestion, answer);
@@ -33,7 +36,10 @@ export default function Question() {
       setCurrentQuestion(nextQuestion);
     } else {
       if (typeof window !== "undefined") {
-        localStorage.setItem("answers", JSON.stringify(Object.values(updatedAnswers)));
+        localStorage.setItem(
+          "answers",
+          JSON.stringify(Object.values(updatedAnswers))
+        );
       }
       router.push("/suggestedPackages");
     }
@@ -61,7 +67,8 @@ export default function Question() {
             if (!subQuestion.hidden) {
               return subQuestion;
             }
-            const nextVisibleSubQuestion = findNextVisibleSubQuestion(subQuestion);
+            const nextVisibleSubQuestion =
+              findNextVisibleSubQuestion(subQuestion);
             if (nextVisibleSubQuestion) {
               return nextVisibleSubQuestion;
             }
@@ -78,6 +85,7 @@ export default function Question() {
     }
 
     const nextStep = question.answer[answer];
+    console.log("🚀 ~ findNextQuestion ~ nextStep:", nextStep);
     if (Array.isArray(nextStep)) {
       return findFirstVisibleQuestion(nextStep);
     }
@@ -94,12 +102,14 @@ export default function Question() {
       if (nextQuestion) {
         return nextQuestion;
       }
-      const nextId = (parseInt(question.id.split('.')[0]) + 1).toString();
-      return findFirstVisibleQuestion(questionsData.filter(q => q.id.startsWith(nextId)));
+      const nextId = (parseInt(question.id.split(".")[0]) + 1).toString();
+      return findFirstVisibleQuestion(
+        questionsData.filter((q) => q.id.startsWith(nextId))
+      );
     }
 
     if (nextStep.subNext || nextStep.subSubNext) {
-      const parentQuestionId = question.id.split('.').slice(0, -1).join('.');
+      const parentQuestionId = question.id.split(".").slice(0, -1).join(".");
       const parentAnswer = answers[parentQuestionId] || "TRUE";
       const parentQuestion = findQuestionById(parentQuestionId);
       const parentAnswerArray = parentQuestion.answer[parentAnswer];
@@ -111,14 +121,14 @@ export default function Question() {
         return parentAnswerArray[nextIndex];
       } else {
         setCurrentIndices({ ...currentIndices, [parentQuestionId]: 0 });
-        if (question.id.includes('.')) {
-          const nextIdParts = question.id.split('.');
+        if (question.id.includes(".")) {
+          const nextIdParts = question.id.split(".");
           const nextSubId = parseInt(nextIdParts[nextIdParts.length - 1]) + 1;
           const nextId = `${nextIdParts[0]}.${nextSubId}`;
-          return questionsData.find(q => q.id === nextId);
+          return questionsData.find((q) => q.id === nextId);
         } else {
           const nextId = (parseInt(question.id) + 1).toString();
-          return questionsData.find(q => q.id === nextId);
+          return questionsData.find((q) => q.id === nextId);
         }
       }
     }
@@ -127,8 +137,13 @@ export default function Question() {
   };
 
   const findNextVisibleQuestion = (currentQuestion) => {
-    const nextId = (parseInt(currentQuestion.id.split('.')[0]) + 1).toString();
-    const nextQuestion = questionsData.find(q => q.id === nextId);
+    const nextId = (parseInt(currentQuestion.id.split(".")[0]) + 1).toString();
+    const nextQuestion = questionsData.find((q) => q.id === nextId);
+    console.log(
+      "🚀 ~ findNextVisibleQuestion ~ nextQuestion:",
+      nextQuestion,
+      nextId
+    );
     if (nextQuestion && nextQuestion.hidden) {
       return findNextVisibleSubQuestion(nextQuestion);
     }
@@ -143,7 +158,7 @@ export default function Question() {
         return current;
       }
       if (current.answer) {
-        Object.values(current.answer).forEach(answer => {
+        Object.values(current.answer).forEach((answer) => {
           if (Array.isArray(answer)) {
             queue.push(...answer);
           }
@@ -157,11 +172,12 @@ export default function Question() {
     <div className="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-20 mt-16 md:mt-32 px-4 lg:mx-60">
       <div className="pt-8 md:pt-16 w-full md:w-1/2">
         <h1 className="text-xl sm:text-2xl md:text-2xl font-bold mb-4">
-          {t('title')}
+          {t("title")}
         </h1>
         {currentQuestion ? (
           <div className="flex flex-col">
             <QuestionData
+              id={currentQuestion.id}
               question={currentQuestion.question}
               options={currentQuestion.options}
               value={answers[currentQuestion.id] || ""}
@@ -173,7 +189,7 @@ export default function Question() {
               onClick={handleOptionChange}
               disabled={!answers[currentQuestion.id]}
             >
-              {t('button-1')}
+              {t("button-1")}
             </Button>
           </div>
         ) : null}
