@@ -167,7 +167,7 @@ export default function PackagePath() {
           <DialogContentText>
             {modalDescription}
             <h4 className="font-semibold mt-2 text-black">
-              What you get with the package:
+              {t("what-you-get-title")}
             </h4>
             {modalWhatGet
               ?.slice(0, modalWhatGet.length - 1)

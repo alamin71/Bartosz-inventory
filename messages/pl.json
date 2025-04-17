@@ -84,6 +84,7 @@
     "5-2": "Czy chcesz, aby zewnętrzny audytor przyjechał do Twojej firmy i przeprowadził audyt biznesowy?",
     "5-3": "Czy chcesz, aby zewnętrzny audytor przeprowadził kontrolę zapasów w Twoich placówkach?"
   },
+
   "Packages": {
     "title": "Sugerowane pakiety",
     "starting-title-front": "Który problem chcesz",
@@ -99,23 +100,57 @@
     "annual-savings": "Oznacza to, że zaoszczędzisz rocznie",
     "info": "Informacje",
     "button-2": "Zamknij",
+    "what-you-get-title": "Co otrzymasz wybierając ten pakiet:",
+
     "1-problem": "Moje miesięczne przychody ze sprzedaży napojów wynoszą",
     "1-package": "Menedżer efektywności kosztów napojów",
+    "1-description": "Wprowadź zweryfikowane rozwiązania, które przyniosły zwiększenie zyskowności w setkach lokali. Dzięki analityce biznesowej zapewnionej przez dedykowanego specjalistę z horecaAI zredukujesz straty surowców o 90% w czterech krokach: zbierzesz dane o stanie magazynowym przez aplikację mobilną, prześlesz dane zakupów surowców i sprzedaży do Twojego indywidualnego doradcy z horecaAI, co najmniej raz w miesiącu otrzymasz raport zawierający informacje z jakimi produktami występują problemy, by finalnie omówić z doradcą horecaAI jakie działania podjąć by poprawić wyniki.",
+    "1-one-liner": "Zredukuj swój beverage cost w 3 miesiące i spraw, by zaplanowane marże stały się rzeczywiste",
+    "1-what-you-get": "Dostęp do systemu zarządzania surowcami z wszystkimi wymaganymi modułami. Dedykowany doradca. Raport kwotowo-ilościowy. Godzinna konsultacja z doradcą horecaAI. Dostęp do materiałów, które pomogą Tobie zorganizować proces kontrolny od A do Z. Dostęp do najlepszych branżowych praktyk zarządzania surowcami.",
+
     "2-problem": "Mój miesięczny dochód ze sprzedaży żywności wynosi",
     "2-package": "Menedżer efektywności kosztów żywności",
+    "2-description": "Wprowadź zweryfikowane rozwiązania, które przyniosły zwiększenie zyskowności w setkach lokali. Dzięki analityce biznesowej zapewnionej przez dedykowanego specjalistę z horecaAI zredukujesz straty surowców o 90% w czterech krokach: zbierzesz dane o stanie magazynowym przez aplikację mobilną, prześlesz dane zakupów surowców i sprzedaży do Twojego indywidualnego doradcy z horecaAI, co najmniej raz w miesiącu otrzymasz raport zawierający informacje z jakimi produktami występują problemy, by finalnie omówić z doradcą horecaAI jakie działania podjąć by poprawić wyniki.",
+    "2-one-liner": "Zredukuj swój food cost w 3 miesiące i spraw, by zaplanowane marże stały się rzeczywiste",
+    "2-what-you-get": "Dostęp do systemu zarządzania surowcami z wszystkimi wymaganymi modułami. Dedykowany doradca. Raport kwotowo-ilościowy. Godzinna konsultacja z doradcą horecaAI. Dostęp do materiałów, które pomogą Tobie zorganizować proces kontrolny od A do Z. Dostęp do najlepszych branżowych praktyk zarządzania surowcami.",
+
     "3-problem": "Chcę zarabiać więcej na inżynierii menu",
     "3-package": "Menedżer inżynierii menu",
+    "3-description": "Poprawnie wyceń swoje menu - zgodnie z kosztem surowców, modelem biznesowym lokalu, otoczeniem biznesowym, konkurencją, zwyczajami gości, analizą sprzedaży, spójnością menu, sezonowością, pogodą i kalendarzem wydarzeń. Twój dedykowany doradca z horecaAI wykorzysta trzy super moce: analizę danych, wywiad i najlepsze praktyki horecaAI - wszystko w jednym celu: zwiększyć obrót generowany przez Twoje menu.",
+    "3-one-liner": "Nawet do 10% wzrostu wartości sprzedaży z Twojego menu",
+    "3-what-you-get": "Dwa raporty w miesiącu 'Wskaźniki Menu'. Raz w miesiącu 90-minutowe konsultacje z Twoim dedykowanym doradcą horecaAI. Dostęp do najlepszych branżowych praktyk. Raporty z analizą marży i kosztów.",
+
     "4-problem": "Chcę kontrolować i obniżać koszty produktów w hotelu",
     "4-package": "Menedżer efektywności kosztów hotelu",
+    "4-description": "Ogranicz koszty pracy związane z efektywnym zarządzaniem surowcami i wyposażeniem hotelu - produkty spożywcze, napoje, środki czystości, materiały eksploatacyjne, wypożyczenie pokoi i materiały techniczne. Monitoruj przepływy produktów między departamentami i połącz je z obrotami hotelu. Pracownicy hotelu, odpowiedzialni za magazyny, będą zbierać dane o ich stanie z wykorzystaniem aplikacji mobilnej. Zebrane dane są odrazu dostępne w aplikacji przeglądarkowej, podzielone według departamentu, magazynów, kategorii, typów lub w jakikolwiek inny sposób którego potrzebujesz.",
+    "4-one-liner": "Zredukuj o 75% koszty zatrudnienia związane z zarządzaniem surowcami",
+    "4-what-you-get": "Zunifikowany, transparentny system zarządzania surowcami. Dostęp do aplikacji mobilnej (dostępna na Android/iOS). Dostęp do aplikacji przeglądarkowej. Dedykowana elektroniczna waga z Bluetooth. Setki godzin oszczędzonych na remanentach.",
+
     "5-problem": "Chcę mieć niezależnego audytora w moich placówkach",
     "5-package": "Certyfikowany audytor zewnętrzny",
+    "5-description": "Masz problem z kompetencjami kadry zarządczej? Usprawnij swój biznes z certyfikowanymi lokalnymi audytorami zewnętrznymi. Otrzymasz kontakt do profesjonalistów wdrażających rozwiązania horecaAI. Usługa aktualnie dostępna na określonych rynkach: wybrane kraje europejskie, Tajlandia, Singapur i Stany Zjednoczone Ameryki Północnej.",
+    "5-one-liner": "Certyfikowany audytor wspierający Twoje potrzeby",
+    "5-what-you-get": "Dostęp do zweryfikowanego lokalnego audytora zewnętrznego. Najlepsze praktyki branżowe horecaAI i rekomendacje wdrożone przez audytora.",
+
     "6-problem": "Chcę mierzyć i redukować negatywny wpływ mojej firmy na środowisko",
     "6-package": "Menedżer CSR",
+    "6-description": "Wprowadź rozwiązania horecaAI, które policzą aktualny ślad węglowy i wodny generowany przez Twój biznes. Określ produkty, które generują nadmiarny ślad i zredukuj je o 75%. Pakiet pomaga zredukować nadmierny negatywny wpływ na środowisko wynikają wyłącznie z zużycia produktów spożywczych i napojów.",
+    "6-one-liner": "Monitoruj i redukuj nadmierny negatywny wpływ Twojej firmy na środowisko",
+    "6-what-you-get": "Raz w miesiącu raport 'Wpływu na środowisko'. Raz w miesiącu 60-minutowa konsultacja z dedykowanym doradcą horecaAI.",
+
     "7-problem": "Chcę kontrolować firmę samodzielnie",
     "7-package": "Narzędzia do kontroli zapasów",
+    "7-description": "Skończ z marnowaniem czasu robiąc remanent z kartką i długopisem - zrób to jak profesjonaliści - cztery razy szybciej. Wybierz aplikację na smartfon i ułatw sobie życie. Skanujesz kod kreskowy, wpisujesz liczbę produktów i ... już - zrobione! Wszystkie policzone produkty od razu trafiają na Twoje konto.",
+    "7-one-liner": "4 razy szybsza kontrola surowców",
+    "7-what-you-get": "Dostęp do aplikacji mobilnej. Dostęp do bazy danych produktów. Dedykowana waga z Bluetooth. Setki godzin oszczędzonych na remanentach.",
+
     "8-problem": "Chcę znać moje zyski i straty codziennie",
-    "8-package": "Codzienny monitor zysków i strat"
+    "8-package": "Codzienny monitor zysków i strat",
+    "8-description": "Monitoruj koszty prowadzenia biznesu i porównuj je do przychodów rozwiązaniami horecaAI Codzienny P&L. To jest pierwszy krok w kierunku świadomego zarządzania finansami w biznesie gastronomicznym.",
+    "8-one-liner": "Twój codzienny podgląd opłacalności biznesu",
+    "8-what-you-get": "Indywidualne konto obsługujące jeden lokal gastronomiczny. Dostęp do aplikacji przeglądarkowej P&L horecaAI. Gotowe do działania (skonfigurowane) konto, które możesz w łatwy sposób dostosować do własnych potrzeb. Nielimitowaną liczbę kont dla swoich pracowników. Przewodnik jak wprowadzić rozwiązanie P&L horecaAI i najlepsze praktyki rynkowe."
   },
+
   "PriceList": {
     "title": "Mój Biznesowy Przypadek",
     "conclusion": "Zyskaj - bierz bez spoilerów",
