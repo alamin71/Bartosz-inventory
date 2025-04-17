@@ -117,7 +117,7 @@ export default function PackagePath() {
                 >
                   <div className="flex justify-between">
                     <FormLabel className={`text-lg text-black w-11/12`}>
-                      {t(`${item.problem}`)}
+                      {t(`${item.oneLiner}`)}
                     </FormLabel>
                     <FiInfo
                       size={24}

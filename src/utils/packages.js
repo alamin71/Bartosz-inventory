@@ -2,6 +2,7 @@ const packageData = [
   {
     id: "8",
     problem: "8-problem",
+    oneLiner: "8-one-liner",
     package: "8-package",
     description: "8-description",
     whatGet: "8-what-you-get",
@@ -10,6 +11,7 @@ const packageData = [
   {
     id: "7",
     problem: "7-problem",
+    oneLiner: "7-one-liner",
     package: "7-package",
     description: "7-description",
     whatGet: "7-what-you-get",
@@ -18,6 +20,7 @@ const packageData = [
   {
     id: "1",
     problem: "1-problem",
+    oneLiner: "1-one-liner",
     package: "1-package",
     description: "1-description",
     whatGet: "1-what-you-get",
@@ -26,6 +29,7 @@ const packageData = [
   {
     id: "2",
     problem: "2-problem",
+    oneLiner: "2-one-liner",
     package: "2-package",
     description: "2-description",
     whatGet: "2-what-you-get",
@@ -34,6 +38,7 @@ const packageData = [
   {
     id: "3",
     problem: "3-problem",
+    oneLiner: "3-one-liner",
     package: "3-package",
     description: "3-description",
     whatGet: "3-what-you-get",
@@ -42,6 +47,7 @@ const packageData = [
   {
     id: "4",
     problem: "4-problem",
+    oneLiner: "4-one-liner",
     package: "4-package",
     description: "4-description",
     whatGet: "4-what-you-get",
@@ -50,6 +56,7 @@ const packageData = [
   {
     id: "5",
     problem: "5-problem",
+    oneLiner: "5-one-liner",
     package: "5-package",
     description: "5-description",
     whatGet: "5-what-you-get",
@@ -58,6 +65,7 @@ const packageData = [
   {
     id: "6",
     problem: "6-problem",
+    oneLiner: "6-one-liner",
     package: "6-package",
     description: "6-description",
     whatGet: "6-what-you-get",
