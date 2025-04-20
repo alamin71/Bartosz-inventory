@@ -1,17 +1,15 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
-import Link from "next/link";
-import Image from "next/image";
-import logo from "../../public/images/logo.png";
+import LanguageIcon from "@mui/icons-material/Language";
 import Button from "@mui/material/Button";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
-import LanguageIcon from "@mui/icons-material/Language";
-import GTranslateIcon from "@mui/icons-material/GTranslate"; // Icon for English
-import TranslateIcon from "@mui/icons-material/Translate"; // Icon for Polish
-import Cookies from "universal-cookie";
+import Image from "next/image";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
+import Cookies from "universal-cookie";
+import logo from "../../public/images/logo.png";
 
 export default function Navbar() {
   const [anchorEl, setAnchorEl] = useState(null);
@@ -117,14 +115,28 @@ export default function Navbar() {
             onClick={() => handleClose("en")}
             style={{ color: "white" }}
           >
-            <GTranslateIcon style={{ marginRight: 8 }} />
+            {/* <GTranslateIcon style={{ marginRight: 8 }} /> */}
+            <Image
+              src="/images/uk.png"
+              height={30}
+              width={30}
+              alt="uk-flag"
+              className="mr-2"
+            />
             English
           </MenuItem>
           <MenuItem
             onClick={() => handleClose("pl")}
             style={{ color: "white" }}
           >
-            <TranslateIcon style={{ marginRight: 8 }} />
+            {/* <TranslateIcon style={{ marginRight: 8 }} /> */}
+            <Image
+              src="/images/poland.png"
+              height={30}
+              width={30}
+              alt="uk-flag"
+              className="mr-2"
+            />
             Polish
           </MenuItem>
         </Menu>

@@ -47,7 +47,9 @@ const DynamicDataDisplay = () => {
   }
 
   if (!data) {
-    return <p>Loading data...</p>; // Show loading text while data is fetched
+    <div className="h-screen w-screen flex items-center justify-center">
+      <p>Loading data...</p>{" "}
+    </div>;
   }
 
   return (

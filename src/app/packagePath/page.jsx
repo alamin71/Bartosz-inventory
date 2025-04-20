@@ -99,7 +99,7 @@ export default function PackagePath() {
         </div>
       </div>
       <div className="w-full max-w-screen-xl px-4 sm:px-8 py-6 z-10">
-        <div className="flex flex-wrap  -mx-2">
+        <div className="flex flex-wrap w-full -mx-2">
           {packageData.map((item) => {
             const isDependentPackage = [
               // "4-package",
@@ -109,7 +109,10 @@ export default function PackagePath() {
             const isDisabled = isDependentPackage && !isPrimaryPackageSelected;
 
             return (
-              <div key={item.id} className="w-full sm:w-1/2 p-2">
+              <div
+                key={item.id}
+                className="w-full sm:w-1/2 p-2 min-w-[50%] max-w-[50%]"
+              >
                 <FormControl
                   className={`flex flex-col justify-between bg-white h-40 sm:h-48 lg:h-40 p-4 rounded-lg mb-8 ${
                     isDisabled ? "opacity-50" : ""

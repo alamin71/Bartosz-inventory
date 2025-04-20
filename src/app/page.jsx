@@ -1,6 +1,5 @@
 "use client";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
-import { Button } from "@mui/material";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
 import Link from "next/link";
@@ -49,7 +48,6 @@ export default function Home() {
     return amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   }
   const [excelData, setExcelData] = useState(null);
-  console.log("🚀 ~ Home ~ excelData:", excelData?.filteredData[0][2]);
   const [error, setError] = useState("");
 
   useEffect(() => {
@@ -92,7 +90,11 @@ export default function Home() {
   }
 
   if (!excelData) {
-    return <p>Loading data...</p>; // Show loading text while data is fetched
+    return (
+      <div className="h-screen w-screen flex items-center justify-center">
+        <p>Loading data...</p>{" "}
+      </div>
+    ); // Show loading text while data is fetched
   }
 
   return (
@@ -109,12 +111,18 @@ export default function Home() {
           />
           <div className="absolute inset-0 flex items-center justify-center">
             <Link href="/salesTool">
-              <Button className="text-white text-xs sm:text-xs md:text-base lg:text-2xl rounded-3xl px-4 sm:px-8 md:px-12 lg:px-14 py-2 sm:py-3 md:py-5 lg:py-8 bg-[#CC006E] hover:bg-[#f51a88] normal-case">
+              <button className="text-white text-xs sm:text-xs md:text-base lg:text-2xl rounded-3xl px-4 sm:px-8 md:px-12 lg:px-14 py-2 sm:py-3 md:py-5 lg:py-8 bg-[#CC006E] hover:bg-[#f51a88] normal-case">
                 <div className="flex gap-1 md:gap-2 items-center">
                   <p>{t("check-your-benefits")}</p>
                   <ArrowForwardIcon />
                 </div>
-              </Button>
+              </button>
+              {/* <Button className="text-white text-xs sm:text-xs md:text-base lg:text-2xl rounded-3xl px-4 sm:px-8 md:px-12 lg:px-14 py-2 sm:py-3 md:py-5 lg:py-8 bg-[#CC006E] hover:bg-[#f51a88] normal-case">
+                <div className="flex gap-1 md:gap-2 items-center">
+                  <p>{t("check-your-benefits")}</p>
+                  <ArrowForwardIcon />
+                </div>
+              </Button> */}
             </Link>
           </div>
         </div>
