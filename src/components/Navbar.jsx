@@ -46,6 +46,7 @@ export default function Navbar() {
             width={250}
             // height={60}
             className="hover:opacity-80 transition-opacity duration-300"
+            priority
           />
         </div>
       </Link>
