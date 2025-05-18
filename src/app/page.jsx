@@ -146,6 +146,7 @@ export default function Home() {
       {/* Right side */}
       <div className="flex flex-col text-white text-end gap-5 lg:mt-16 px-1 md:px-12 lg:px-4">
         <div className="w-full lg:w-80 flex flex-col px-4 sm:px-0 text-[#FF0079]">
+          <p>Our clients have increased their profits by</p>
           <div className="overflow-hidden">
             <p className="text-3xl lg:text-4xl font-bold">29.58%</p>
           </div>
@@ -165,7 +166,7 @@ export default function Home() {
         </div>
 
         <div className="flex flex-col gap-5 px-4 sm:px-0">
-          <p className="text-lg"> {t("details")} :</p>
+          <p className="text-lg"> {t("That comes from")} :</p>
           <div className="flex flex-col gap-1 overflow-hidden">
             <p className="text-2xl lg:text-3xl font-bold">
               {/* $ {formatMoney(Math.floor(values.revenue))} */}
