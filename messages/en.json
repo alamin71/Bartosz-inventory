@@ -2,7 +2,9 @@
   "HomePage": {
     "check-your-benefits": "Check your benefits",
     "until-now": "Until Now",
-    "our-clients-increased": "Our clients’ increased profit",
+    "Our clients have increased": "Our clients have increased",
+    "their profits by": "their profits by",
+    "That comes from": "That comes from",
     "details": "Details",
     "profitability-by": "Profitability by",
     "which-is": "Which is",
@@ -146,12 +148,15 @@
     "7-problem": "I want to control the business myself",
     "7-package": "INVENTORY CONTROL TOOLS",
     "7-one-liner": "Boost your resources management with DEDICATED 4x faster inventory control tools",
+    "7-two-liner": "Package: Inventory Control Tools",
+
     "7-description": "Reduce time wasted on pen & paper stock control - do it like a professional - 4 times faster. Get a mobile application that makes inventory control easy as a breeze. Scan a barcode, put number of items and bam - it's done. All data is saved instantly on your account, and available for a report or a download in XLS, CSV or TXT file. The app connects automatically with dedicated weight-scale. It means that the system calculates the amount of a product for you! The app has built-in product data base, so you don't need to prepare anything. Also, the app allows you to control the amount of inhouse crafted items, add custom bar codes or organize shelf-to-sheet lists. People using the stock control app became number 1 stock control fans.",
     "7-what-you-get": "Access to inventory control app (Android/iOS). Global product database. Web app for inventory data management. Inventory control process guide. Inventory best practices. Bluetooth weight-scale. Hundreds of hours saved.",
 
     "8-problem": "I want to know my Profit & Loss daily",
     "8-package": "DAILY PROFIT AND LOSS",
     "8-one-liner": "Know your business break-even point on a daily basis.",
+    "8-two-liner": "Package: Daily profit and loss",
     "8-description": "Track your business costs and compare them to revenue with the HoReCa AI Daily Profit & Loss framework. This is the first step toward conscious financial management in the hospitality industry. Gain access to a personalized account where you and your employees can log spending and revenue data. The collected data is automatically categorized, giving you a clear, structured overview of your business's financial performance on a daily basis.\n\nWith this framework, you can implement smarter cost management strategies, such as Revenue-Based Budgeting for resources, Zero-Based Budgeting, or Incremental Budgeting for staffing. You'll get answers to critical financial questions, including:\n\n- Did I spend more than I earned today?\n- What was the ratio of kitchen staff costs to food sales revenue each day of the week?\n- What is the minimum daily revenue needed to reach the break-even point?\n- How much profit will I make this month?\n- How much did I spend on food and beverage supplies today?",
     "8-what-you-get": "Individual account for a single venue. Access to horecaAI P&L web application. Pre-configured account. Unlimited employee seats. Implementation and best practices guidebook."
   },
