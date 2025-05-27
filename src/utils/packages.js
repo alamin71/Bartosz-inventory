@@ -20,7 +20,7 @@ const packageData = [
     description: "7-description",
     whatGet: "7-what-you-get",
     price: 119.0,
-    image: "/images/1.png",
+    image: "/images/2.png",
     icon: "/images/1i.png",
   },
   {
@@ -31,7 +31,7 @@ const packageData = [
     description: "1-description",
     whatGet: "1-what-you-get",
     price: 350.0,
-    image: "/images/1.png",
+    image: "/images/3.png",
     icon: "/images/1i.png",
   },
   {
@@ -42,7 +42,7 @@ const packageData = [
     description: "2-description",
     whatGet: "2-what-you-get",
     price: 644.0,
-    image: "/images/1.png",
+    image: "/images/4.png",
     icon: "/images/1i.png",
   },
   {
@@ -53,7 +53,7 @@ const packageData = [
     description: "3-description",
     whatGet: "3-what-you-get",
     price: 149.75,
-    image: "/images/1.png",
+    image: "/images/5.png",
     icon: "/images/1i.png",
   },
   {
@@ -64,7 +64,7 @@ const packageData = [
     description: "4-description",
     whatGet: "4-what-you-get",
     price: 230.51,
-    image: "/images/1.png",
+    image: "/images/7.png",
     icon: "/images/1i.png",
   },
   {
@@ -75,7 +75,7 @@ const packageData = [
     description: "5-description",
     whatGet: "5-what-you-get",
     price: 76.92,
-    image: "/images/1.png",
+    image: "/images/8.png",
     icon: "/images/1i.png",
   },
   {
@@ -86,7 +86,7 @@ const packageData = [
     description: "6-description",
     whatGet: "6-what-you-get",
     price: 102.0,
-    image: "/images/1.png",
+    image: "/images/9.png",
     icon: "/images/1i.png",
   },
 ];

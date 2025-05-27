@@ -712,7 +712,7 @@ export default function PackagePath() {
                       alt="package-image"
                       width={100}
                       height={120}
-                      className="object-contain w-56 h-80"
+                      className="object-contain w-56 h-60"
                     />
                   </div>
 
@@ -726,7 +726,7 @@ export default function PackagePath() {
                         {t(item.oneLiner)}
                       </p>
 
-                      <p className="text-sm text-black mt-14 select-none">
+                      <p className="text-sm text-black mt-8 select-none">
                         <span
                           onClick={() =>
                             handleInfoClick(
