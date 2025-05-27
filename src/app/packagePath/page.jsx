@@ -616,11 +616,13 @@ export default function PackagePath() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalDescription, setModalDescription] = useState("");
   const [modalWhatGet, setModalWhatGet] = useState([]);
+  const [modalPackageName, setModalPackageName] = useState("");
 
-  const handleInfoClick = (content, whatGet) => {
+  const handleInfoClick = (packageName, content, whatGet) => {
     const whatGetItems = whatGet.split(".");
     setModalDescription(content);
     setModalWhatGet(whatGetItems);
+    setModalPackageName(packageName);
     setIsModalOpen(true);
   };
 
@@ -730,6 +732,7 @@ export default function PackagePath() {
                         <span
                           onClick={() =>
                             handleInfoClick(
+                              t(item.package),
                               t(item.description),
                               t(item.whatGet)
                             )
@@ -780,7 +783,7 @@ export default function PackagePath() {
         {t("button-1")}
       </Button>
 
-      <Dialog open={isModalOpen} onClose={handleCloseModal}>
+      {/* <Dialog open={isModalOpen} onClose={handleCloseModal}>
         <DialogTitle>{t("info")}</DialogTitle>
         <DialogContent>
           <DialogContentText>
@@ -800,6 +803,38 @@ export default function PackagePath() {
             {t("button-2")}
           </Button>
         </DialogActions>
+      </Dialog> */}
+      <Dialog
+        open={isModalOpen}
+        onClose={handleCloseModal}
+        maxWidth="sm"
+        fullWidth
+      >
+        <div className="p-6">
+          <p className="text-black text-base font-medium mb-1">
+            Package: <span className="font-semibold">{modalPackageName}</span>
+          </p>
+          <div className="w-[150px] h-[2px] bg-[#ff008a] mb-4" />
+          <p className="text-black text-sm mb-4">{modalDescription}</p>
+          <h4 className="text-black font-semibold text-base mb-2">
+            {t("what-you-get-title")}
+          </h4>
+          <ul className="list-disc pl-5 text-sm text-black space-y-1">
+            {modalWhatGet
+              ?.slice(0, modalWhatGet.length - 1)
+              .map((item, index) => (
+                <li key={index}>{item.trim()}</li>
+              ))}
+          </ul>
+          <div className="flex justify-end mt-6">
+            <button
+              onClick={handleCloseModal}
+              className="text-[#ff008a] text-sm font-medium underline underline-offset-2 hover:text-[#d40070]"
+            >
+              Close
+            </button>
+          </div>
+        </div>
       </Dialog>
     </div>
   );
