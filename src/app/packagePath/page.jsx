@@ -708,7 +708,7 @@ export default function PackagePath() {
                   } ${isDisabled ? "opacity-50" : ""}`}
                 >
                   {/* Image left side */}
-                  <div className="">
+                  <div className="border rounded-lg border-black px-2">
                     <Image
                       src={item.image}
                       alt="package-image"
