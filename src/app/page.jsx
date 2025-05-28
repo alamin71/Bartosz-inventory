@@ -12,7 +12,11 @@ export default function Home() {
 
   const [excelData, setExcelData] = useState(null);
   const [error, setError] = useState("");
-  const images = ["/images/home2.jpeg", "/images/home1.jpeg"];
+  const images = [
+    "/images/home2.jpeg",
+    "/images/home1.jpeg",
+    "/images/home3.jpeg",
+  ];
   const [randomImage, setRandomImage] = useState(images[0]);
 
   // useEffect(() => {
@@ -116,7 +120,16 @@ export default function Home() {
       {/* left side */}
       <div className="bg-white/10 flex-grow lg:flex-grow-0 rounded-lg mt-5 lg:mt-16 lg:h-[58%] md:h-[480px] ">
         <div className="relative h-64 sm:h-[400px] md:h-[480px] lg:h-full rounded-lg overflow-hidden">
-          <Image src={randomImage} alt="bg-image" fill className="absolute" />
+          <div className="absolute inset-0 transition-opacity duration-1000 opacity-100">
+            <Image
+              key={randomImage} // key triggers re-render with animation
+              src={randomImage}
+              alt="bg-image"
+              fill
+              style={{ objectFit: "", objectPosition: "center" }}
+              className="rounded-lg"
+            />
+          </div>
 
           <div className="absolute inset-0 flex items-center justify-center">
             <Link href="/salesTool">
