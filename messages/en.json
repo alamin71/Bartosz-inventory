@@ -91,7 +91,17 @@
   },
 
   "Packages": {
+    "why-clients-love": "Why Clients Love This Package",
+    "more-package-info": "More package information",
+    "package-label": "Package:",
     "title": "Suggested Packages",
+    "Your-data": "Your data",
+    "Your-profit": "Your-profit",
+    "Your-offer": "Your-offer",
+    "Click-to-find": "Click-to-find",
+    "Detailed-results": "Detailed-results",
+    "Why Clients Love This Package": "Why Clients Love This Package",
+
     "calculated-monthly-revenue": "To calculate the results enter your monthly revenue",
     "starting-title-front": "Which Problem do you want",
     "starting-title-end": "to solve",

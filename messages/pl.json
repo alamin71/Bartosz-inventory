@@ -88,6 +88,16 @@
   },
 
   "Packages": {
+    "why-clients-love": "Sprawdź dlaczego Klienci uwielbiają ten pakiet",
+    "more-package-info": "Więcej informacji o pakiecie",
+    "package-label": "Pakiet:",
+    "Your-data": "Twoje dane",
+    "Your-profit": "Twój zysk",
+    "Your-offer": "Twoja oferta",
+    "Click-to-find": "Więcej informacji o pakiecie",
+    "Detailed-results": "Szczegółowe rezultaty",
+    "Why Clients Love This Package": "Sprawdź dlaczego Klienci uwielbiają ten pakiet",
+
     "title": "Sugerowane pakiety",
     "starting-title-front": "Który problem chcesz",
     "starting-title-end": "rozwiązać",
