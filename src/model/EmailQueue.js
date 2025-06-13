@@ -1,19 +1,23 @@
-import mongoose from 'mongoose';
+import mongoose from "mongoose";
 
-const emailQueueSchema = new mongoose.Schema({
-  email: {
-    type: String,
-    required: true,
+const emailQueueSchema = new mongoose.Schema(
+  {
+    email: {
+      type: String,
+      required: [true, "Email is required"],
+    },
+    value: {
+      type: String,
+      required: [true, "Value is required"],
+    },
   },
-  value: {
-    type: String,
-    required: true,
+  {
+    timestamps: true,
   }
-}, { 
-  timestamps: true 
-});
+);
 
 // Check if the model already exists before defining it
-const EmailQueue = mongoose.models.EmailQueue || mongoose.model('EmailQueue', emailQueueSchema);
+const EmailQueue =
+  mongoose.models.EmailQueue || mongoose.model("EmailQueue", emailQueueSchema);
 
 export default EmailQueue;

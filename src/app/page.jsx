@@ -126,7 +126,9 @@ export default function Home() {
               src={randomImage}
               alt="bg-image"
               fill
-              style={{ objectFit: "", objectPosition: "center" }}
+              sizes="(max-width: 600px) 100vw, (max-width: 1200px) 50vw, 33vw"
+              priority
+              style={{ objectPosition: "center" }}
               className="rounded-lg"
             />
           </div>

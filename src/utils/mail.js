@@ -1,11 +1,16 @@
-import nodemailer from 'nodemailer';
+import dotenv from "dotenv";
+dotenv.config();
+
+import nodemailer from "nodemailer";
 
 // Create a Nodemailer transporter
 const transporter = nodemailer.createTransport({
-  service: 'gmail', // or your email service
+  host: "smtp.titan.email", // SMTP server
+  port: 465, // SSL port
+  secure: true, // Use SSL
   auth: {
-    user: 'team.robust.dev@gmail.com',
-    pass: 'dmvf dwrv jhfc sfpd',
+    user: process.env.NEXT_PUBLIC_EMAIL_USER,
+    pass: process.env.NEXT_PUBLIC_EMAIL_PASS,
   },
 });
 
@@ -13,10 +18,17 @@ const transporter = nodemailer.createTransport({
 const sendSingleEmail = async (emailJob) => {
   try {
     const { email, value } = emailJob;
-    const { packages, combinedPrice, totalSavings, monthlySalesSavings, totalMonthlySavings, annualSavings } = JSON.parse(value);
+    const {
+      packages,
+      combinedPrice,
+      totalSavings,
+      monthlySalesSavings,
+      totalMonthlySavings,
+      annualSavings,
+    } = JSON.parse(value);
 
     // Format the email content
-    let packageDetails = '';
+    let packageDetails = "";
     let total = 0;
 
     packages.forEach((pkg) => {
@@ -32,28 +44,32 @@ const sendSingleEmail = async (emailJob) => {
            <td>Combined Price</td>
            <td>$${combinedPrice.toFixed(2)}</td>
          </tr>`
-      : '';
+      : "";
 
     const savingsDetails = totalSavings
       ? `<tr class="total-row">
            <td>Total Savings</td>
            <td>$${totalSavings.toFixed(2)}</td>
          </tr>`
-      : '';
+      : "";
 
-    const monthlySavingsDetails = monthlySalesSavings && monthlySalesSavings.length > 0
-      ? monthlySalesSavings
-          .filter((item) => ["1", "2", "3"].includes(item.id))
-          .map((item) => `
+    const monthlySavingsDetails =
+      monthlySalesSavings && monthlySalesSavings.length > 0
+        ? monthlySalesSavings
+            .filter((item) => ["1", "2", "3"].includes(item.id))
+            .map(
+              (item) => `
             <tr>
               <td>Monthly Savings (${item.package})</td>
               <td>$${item.savings.toFixed(2)}</td>
-            </tr>`)
-          .join('')
-      : '';
+            </tr>`
+            )
+            .join("")
+        : "";
 
-    const totalSavingsDetails = totalMonthlySavings || annualSavings
-      ? `<tr class="total-row">
+    const totalSavingsDetails =
+      totalMonthlySavings || annualSavings
+        ? `<tr class="total-row">
            <td>Total Monthly Savings</td>
            <td>$${totalMonthlySavings.toFixed(2)}</td>
          </tr>
@@ -61,8 +77,9 @@ const sendSingleEmail = async (emailJob) => {
            <td>Annual Savings</td>
            <td>$${annualSavings.toFixed(2)}</td>
          </tr>`
-      : '';
+        : "";
 
+    // Client Email Body content updates
     const emailContent = `
       <!DOCTYPE html>
       <html lang="en">
@@ -71,6 +88,7 @@ const sendSingleEmail = async (emailJob) => {
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Horeca.ai Sales Package</title>
         <style>
+          /* styling for the email */
           body {
             font-family: Arial, sans-serif;
             background-color: #f4f4f4;
@@ -175,7 +193,9 @@ const sendSingleEmail = async (emailJob) => {
               ${savingsDetails}
             </table>
 
-            ${monthlySavingsDetails || totalSavingsDetails ? `
+            ${
+              monthlySavingsDetails || totalSavingsDetails
+                ? `
               <h2>Additional Savings</h2>
               <table class="savings-table">
                 <tr>
@@ -184,11 +204,12 @@ const sendSingleEmail = async (emailJob) => {
                 </tr>
                 ${monthlySavingsDetails}
                 ${totalSavingsDetails}
-              </table>` : '<div></div>'}
+              </table>`
+                : ""
+            }
           </div>
           <div class="footer">
-            <p>For further assistance or more information, please contact us at <a class="contact"
-                href="mailto:support@horeca.ai">support@horeca.ai</a>.</p>
+            <p>For further assistance or more information, please contact us at <a class="contact" href="mailto:support@horeca.ai">support@horeca.ai</a>.</p>
             <p>Best Regards,<br>Horeca.ai Team</p>
           </div>
         </div>
@@ -198,23 +219,24 @@ const sendSingleEmail = async (emailJob) => {
 
     // Send the email
     const mailOptions = {
-      from: 'team.robust.dev@gmail.com', // sender address
-      to: email, // list of receivers
-      subject: 'Your Horeca.ai Sales Package', // Subject line
-      html: emailContent, // html body
+      from: "contact@horecaai.com", // sender address
+      to: email, // receiver address
+      subject: "Your Horeca.ai Sales Package", // Subject line
+      html: emailContent, // HTML body
     };
 
     try {
       await transporter.sendMail(mailOptions);
+      console.log(`Email successfully sent to: ${email}`);
       return true;
     } catch (error) {
       console.error(`Failed to send email to ${email}:`, error);
       return false;
     }
   } catch (error) {
-    console.error('Error processing email job:', error);
+    console.error("Error processing email job:", error);
     return false;
   }
-}
+};
 
 export default sendSingleEmail;

@@ -24,13 +24,31 @@ export default function PriceList() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [successModalOpen, setSuccessModalOpen] = useState(false);
 
+  // useEffect(() => {
+  //   const selectedPackagesString = localStorage.getItem("selectedPackages");
+  //   if (selectedPackagesString) {
+  //     const packagesArray = JSON.parse(selectedPackagesString);
+  //     setSelectedPackages(packagesArray);
+  //   } else {
+  //     router.push("/");
+  //   }
+  // }, []);
+
   useEffect(() => {
     const selectedPackagesString = localStorage.getItem("selectedPackages");
     if (selectedPackagesString) {
       const packagesArray = JSON.parse(selectedPackagesString);
       setSelectedPackages(packagesArray);
+
+      // Calculate the total price and store emailValues in localStorage
+      const emailValues = {
+        packages: packagesArray,
+        totalPrice: packagesArray.reduce((acc, pkg) => acc + pkg.price, 0),
+      };
+
+      localStorage.setItem("emailValues", JSON.stringify(emailValues)); // Store emailValues
     } else {
-      router.push("/");
+      router.push("/"); // Redirect if no packages are selected
     }
   }, []);
 
@@ -51,11 +69,24 @@ export default function PriceList() {
 
   const handleSave = async (email) => {
     try {
+      // Retrieve the value from localStorage, which should be the email data
       const value = localStorage.getItem("emailValues");
+      console.log("Email Values:", value);
+
+      if (!value) {
+        alert("Email values are missing!");
+        return;
+      }
+
+      // Convert 'value' to a valid JSON object if needed (in case it's a string)
+      const parsedValue = JSON.parse(value);
+
+      // Send the email request to the backend
       const response = await axios.post("/api/email-jobs", {
         email,
-        value,
+        value: JSON.stringify(parsedValue), // Ensure 'value' is passed as a stringified JSON
       });
+
       if (response.status === 200) {
         setSuccessModalOpen(true);
         setIsModalOpen(false);
