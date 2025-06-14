@@ -2,6 +2,7 @@ import dotenv from "dotenv";
 dotenv.config();
 
 import nodemailer from "nodemailer";
+import path from "path";
 
 // Create a Nodemailer transporter
 const transporter = nodemailer.createTransport({
@@ -17,7 +18,7 @@ const transporter = nodemailer.createTransport({
 // Function to send a single email
 const sendSingleEmail = async (emailJob) => {
   try {
-    const { email, value } = emailJob;
+    const { email, value, language } = emailJob;
     const {
       packages,
       combinedPrice,
@@ -27,7 +28,23 @@ const sendSingleEmail = async (emailJob) => {
       annualSavings,
     } = JSON.parse(value);
 
-    // Format the email content
+    // Email body content provided by Bartosz
+    let emailBody = "";
+    if (language === "PL") {
+      emailBody = `
+        <p>Cześć!</p>
+        <p>Dziękujemy za skorzystanie z kalkulatora wartości horecaAI. Twoja oferta została załączona do tej wiadomości.</p>
+        <p>Następny krok to omówienie Twojej oferty - <a href="YOUR_CALENDAR_LINK">umów się na spotkanie</a>.</p>
+      `;
+    } else {
+      emailBody = `
+        <p>Hi!</p>
+        <p>Thank you for using horecaAI business case builder. We have attached your business case to this email.</p>
+        <p>Schedule a meeting to take next steps: <a href="YOUR_CALENDAR_LINK">Click here to schedule</a>.</p>
+      `;
+    }
+
+    // Format the package details (same as before)
     let packageDetails = "";
     let total = 0;
 
@@ -58,11 +75,11 @@ const sendSingleEmail = async (emailJob) => {
         ? monthlySalesSavings
             .filter((item) => ["1", "2", "3"].includes(item.id))
             .map(
-              (item) => `
-            <tr>
-              <td>Monthly Savings (${item.package})</td>
-              <td>$${item.savings.toFixed(2)}</td>
-            </tr>`
+              (item) => ` 
+                <tr>
+                  <td>Monthly Savings (${item.package})</td>
+                  <td>$${item.savings.toFixed(2)}</td>
+                </tr>`
             )
             .join("")
         : "";
@@ -70,16 +87,16 @@ const sendSingleEmail = async (emailJob) => {
     const totalSavingsDetails =
       totalMonthlySavings || annualSavings
         ? `<tr class="total-row">
-           <td>Total Monthly Savings</td>
-           <td>$${totalMonthlySavings.toFixed(2)}</td>
-         </tr>
-         <tr class="total-row">
-           <td>Annual Savings</td>
-           <td>$${annualSavings.toFixed(2)}</td>
-         </tr>`
+             <td>Total Monthly Savings</td>
+             <td>$${totalMonthlySavings.toFixed(2)}</td>
+           </tr>
+           <tr class="total-row">
+             <td>Annual Savings</td>
+             <td>$${annualSavings.toFixed(2)}</td>
+           </tr>`
         : "";
 
-    // Client Email Body content updates
+    // Email content for the email body
     const emailContent = `
       <!DOCTYPE html>
       <html lang="en">
@@ -88,7 +105,6 @@ const sendSingleEmail = async (emailJob) => {
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Horeca.ai Sales Package</title>
         <style>
-          /* styling for the email */
           body {
             font-family: Arial, sans-serif;
             background-color: #f4f4f4;
@@ -137,6 +153,7 @@ const sendSingleEmail = async (emailJob) => {
 
           .total-row {
             font-weight: bold;
+            background-color: #f9f9f9;
           }
 
           .footer {
@@ -169,6 +186,14 @@ const sendSingleEmail = async (emailJob) => {
             color: #ffffff;
           }
 
+          a {
+            color: #1976D2;
+            text-decoration: none;
+          }
+
+          h2 {
+            color: #1976D2;
+          }
         </style>
       </head>
       <body>
@@ -177,8 +202,7 @@ const sendSingleEmail = async (emailJob) => {
             <h1>Horeca.ai Sales Package</h1>
           </div>
           <div class="content">
-            <p>Dear Customer,</p>
-            <p>Thank you for your interest in our sales packages. Below are the details of your selected package:</p>
+            ${emailBody}
             <table class="package-table">
               <tr>
                 <th>Package</th>
@@ -217,22 +241,26 @@ const sendSingleEmail = async (emailJob) => {
       </html>
     `;
 
-    // Send the email
+    // Send the email with the attachment
     const mailOptions = {
-      from: "contact@horecaai.com", // sender address
-      to: email, // receiver address
-      subject: "Your Horeca.ai Sales Package", // Subject line
-      html: emailContent, // HTML body
+      from: "contact@horecaai.com",
+      to: `${email}, bartosz.firmowski@horecaai.com`, // send to both prospect and Bartosz
+      subject: "Your Horeca.ai Sales Package",
+      html: emailContent,
+      // attachments: [
+      //   {
+      //     filename: "business-case.pdf", // Assuming this is a PDF
+      //     path: path.join(__dirname, "path-to-business-case-file"), // Correct the path dynamically
+      //   },
+      // ],
     };
 
-    try {
-      await transporter.sendMail(mailOptions);
-      console.log(`Email successfully sent to: ${email}`);
-      return true;
-    } catch (error) {
-      console.error(`Failed to send email to ${email}:`, error);
-      return false;
-    }
+    // Send the email
+    await transporter.sendMail(mailOptions);
+    console.log(
+      `Email successfully sent to: ${email} and bartosz.firmowski@horecaai.com`
+    );
+    return true;
   } catch (error) {
     console.error("Error processing email job:", error);
     return false;
