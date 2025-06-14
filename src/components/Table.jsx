@@ -201,12 +201,10 @@ const TableComponent = ({ packages }) => {
         </div>
       </div>
 
-      {/* 2- Price of selected packages with sidebar */}
+      {/* 2- Expected results based on selected packages with sidebar */}
       <div className="bg-white rounded-lg p-4 flex">
         <div className="w-14 sm:w-20 bg-green-100 rounded-l-lg flex items-center justify-center">
           <span className="text-xs sm:text-sm font-semibold text-green-800 px-2 whitespace-nowrap">
-            {/* {t("Your")} <br />
-            {t("offer")} */}
             {t("Your")} <br />
             {t("profit")}
           </span>
@@ -259,12 +257,10 @@ const TableComponent = ({ packages }) => {
         </div>
       </div>
 
-      {/* 3️- Expected savings with sidebar */}
+      {/* 3️- Price of selected packages with sidebar */}
       <div className="bg-white rounded-lg p-4 flex">
         <div className="w-14 sm:w-20 bg-blue-100 rounded-l-lg flex items-center justify-center">
           <span className="text-xs sm:text-sm font-semibold text-blue-800 whitespace-nowrap">
-            {/* {t("Your")} <br />
-            {t("profit")} */}
             {t("Your")} <br />
             {t("offer")}
           </span>
